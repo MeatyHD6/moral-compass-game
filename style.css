@@ -52,17 +52,32 @@ body {
     text-align: center;
 }
 
-/* Feedback box (shown after choice) */
+/* Enhanced feedback box with gradient and animation */
 .feedback-box {
-    background: #e6fffa;
-    border-radius: 8px;
-    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 20px 30px;
     margin-bottom: 20px;
-    border-left: 4px solid #38b2ac;
+    border: none;
     text-align: center;
-    color: #234e52;
     font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 1.6;
     transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .feedback-box.hidden {
@@ -235,60 +250,4 @@ body {
 
 /* Play again button */
 .play-again-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: block;
-    margin: 30px auto 0;
-}
-
-.play-again-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-}
-
-.play-again-btn:active {
-    transform: translateY(0);
-}
-
-/* Hide class utility */
-.hidden {
-    display: none !important;
-}
-
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-    .container {
-        padding: 25px;
-    }
-
-    .title {
-        font-size: 1.5rem;
-    }
-
-    .doors-container {
-        flex-direction: column;
-    }
-
-    .door {
-        min-height: 150px;
-    }
-
-    .scenario-text {
-        font-size: 1rem;
-    }
-
-    .chart-label {
-        font-size: 0.95rem;
-    }
-
-    .bar {
-        height: 30px;
-    }
-}
+    background: linear-gradient(135deg, #667eea 0%, #7
