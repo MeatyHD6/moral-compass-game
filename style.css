@@ -250,4 +250,60 @@ body {
 
 /* Play again button */
 .play-again-btn {
-    background: linear-gradient(135deg, #667eea 0%, #7
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 30px auto 0;
+}
+
+.play-again-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.play-again-btn:active {
+    transform: translateY(0);
+}
+
+/* Hide class utility */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .doors-container {
+        flex-direction: column;
+    }
+
+    .door {
+        min-height: 150px;
+    }
+
+    .scenario-text {
+        font-size: 1rem;
+    }
+
+    .chart-label {
+        font-size: 0.95rem;
+    }
+
+    .bar {
+        height: 30px;
+    }
+}
