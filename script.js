@@ -278,9 +278,10 @@ function showResults() {
     gameScreen.classList.add('hidden');
     resultsScreen.classList.remove('hidden');
     
-    // Calculate and display badges
-    const earnedBadges = calculateBadges();
-    displayBadges(earnedBadges);
+   // Calculate and display badges
+const earnedBadges = calculateBadges();
+console.log('Earned badges:', earnedBadges);
+displayBadges(earnedBadges);
     
     // Count each framework choice
     const counts = {
@@ -366,3 +367,4 @@ function resetGame() {
 
 // Initialize game when page loads
 initGame();
+
