@@ -68,6 +68,30 @@ const scenarios = [
     }
 ];
 
+// Achievement badges definitions
+const badges = {
+    purist: {
+        icon: "🏆",
+        name: "The Purist",
+        description: "All 7 choices from the same framework"
+    },
+    balanced: {
+        icon: "⚖️",
+        name: "The Balanced Mind",
+        description: "Chose all three frameworks at least once"
+    },
+    decisive: {
+        icon: "🎯",
+        name: "The Decisive",
+        description: "Chose one framework 5+ times"
+    },
+    explorer: {
+        icon: "🌟",
+        name: "The Explorer",
+        description: "Completed all scenarios"
+    }
+};
+
 // Summary messages based on the dominant framework
 const summaryMessages = {
     deontology: "You lean toward <strong>Duty-based ethics (Deontology)</strong>. You care about rules, principles, and doing what's right regardless of the outcome. For you, moral rules are universal and should be followed consistently.",
@@ -94,6 +118,7 @@ const nextBtn = document.getElementById('nextBtn');
 const doorsContainer = document.getElementById('doorsContainer');
 const progressIndicator = document.getElementById('progressIndicator');
 const playAgainBtn = document.getElementById('playAgainBtn');
+const badgesList = document.getElementById('badgesList');
 
 // Door elements
 const doors = document.querySelectorAll('.door');
@@ -187,12 +212,75 @@ function handleNext() {
 }
 
 /**
+ * Calculate which badges were earned
+ * @returns {Array} Array of earned badge keys
+ */
+function calculateBadges() {
+    const earnedBadges = [];
+    
+    // Count each framework choice
+    const counts = {
+        deontology: 0,
+        consequentialism: 0,
+        virtue: 0
+    };
+    
+    choices.forEach(choice => {
+        counts[choice]++;
+    });
+    
+    // The Explorer - Always earned for completing all scenarios
+    earnedBadges.push('explorer');
+    
+    // The Purist - All 7 choices from same framework
+    if (counts.deontology === 7 || counts.consequentialism === 7 || counts.virtue === 7) {
+        earnedBadges.push('purist');
+    }
+    
+    // The Balanced Mind - Used all three frameworks at least once
+    if (counts.deontology >= 1 && counts.consequentialism >= 1 && counts.virtue >= 1) {
+        earnedBadges.push('balanced');
+    }
+    
+    // The Decisive - Chose one framework 5+ times
+    if (counts.deontology >= 5 || counts.consequentialism >= 5 || counts.virtue >= 5) {
+        earnedBadges.push('decisive');
+    }
+    
+    return earnedBadges;
+}
+
+/**
+ * Display earned badges
+ * @param {Array} earnedBadges - Array of earned badge keys
+ */
+function displayBadges(earnedBadges) {
+    badgesList.innerHTML = '';
+    
+    earnedBadges.forEach(badgeKey => {
+        const badge = badges[badgeKey];
+        const badgeElement = document.createElement('div');
+        badgeElement.className = 'badge';
+        badgeElement.innerHTML = `
+            <span class="badge-icon">${badge.icon}</span>
+            <div class="badge-name">${badge.name}</div>
+            <div class="badge-description">${badge.description}</div>
+        `;
+        badgesList.appendChild(badgeElement);
+    });
+}
+
+/**
  * Calculate results and display the results screen
  */
 function showResults() {
     // Hide game screen, show results screen
     gameScreen.classList.add('hidden');
     resultsScreen.classList.remove('hidden');
+    
+    // Calculate and display badges
+    const earnedBadges = calculateBadges();
+    displayBadges(earnedBadges);
     
     // Count each framework choice
     const counts = {
@@ -260,6 +348,9 @@ function resetGame() {
     dutyBar.style.width = '0%';
     outcomesBar.style.width = '0%';
     characterBar.style.width = '0%';
+    
+    // Clear badges
+    badgesList.innerHTML = '';
     
     // Hide results, show game screen
     resultsScreen.classList.add('hidden');
