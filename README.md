@@ -2,7 +2,7 @@
 
 An interactive web game exploring ethical decision-making through moral dilemmas.
 
-## 🎮 [Play the Game](https://YOUR-USERNAME.github.io/moral-compass-game/)
+## 🎮 [Play the Game](https://[YOUR-USERNAME.github.io/moral-compass-game/](https://meatyhd6.github.io/moral-compass-game/))
 
 ## About
 
