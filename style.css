@@ -1,309 +1,270 @@
-/* Reset and base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+// ========================================
+// GAME DATA: Scenarios with Engaging Responses
+// ========================================
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 
-                 'Ubuntu', 'Cantarell', sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    line-height: 1.6;
-}
-
-/* Main container - centered card */
-.container {
-    width: 100%;
-    max-width: 900px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    padding: 40px;
-    min-height: 600px;
-}
-
-/* Title styling */
-.title {
-    text-align: center;
-    color: #2d3748;
-    font-size: 2rem;
-    margin-bottom: 30px;
-    font-weight: 700;
-}
-
-/* Scenario box */
-.scenario-box {
-    background: #f7fafc;
-    border-radius: 12px;
-    padding: 30px;
-    margin-bottom: 20px;
-    border-left: 5px solid #667eea;
-}
-
-.scenario-text {
-    font-size: 1.2rem;
-    color: #2d3748;
-    text-align: center;
-}
-
-/* Enhanced feedback box with gradient and animation */
-.feedback-box {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-radius: 12px;
-    padding: 20px 30px;
-    margin-bottom: 20px;
-    border: none;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-    animation: slideIn 0.4s ease;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+const scenarios = [
+    {
+        id: 1,
+        text: "Your best friend asks you to lie to their parents about where they were last night. They were at a party they weren't supposed to attend. What guides your decision?",
+        responses: {
+            deontology: "You tell your friend you can't lie. 'I'm sorry, but I won't compromise my integrity - even for you.' Your friendship might be strained, but you can look yourself in the mirror. Some lines shouldn't be crossed.",
+            consequentialism: "You weigh the options: a small lie prevents major family conflict and keeps your friendship intact. Nobody gets hurt. Sometimes the right answer isn't the honest one - it's the one that causes the least damage.",
+            virtue: "You think: 'What kind of friend am I? What kind of person do I want to be?' Real friendship means both loyalty AND honesty. You decide to talk to your friend about facing the consequences with integrity."
+        }
+    },
+    {
+        id: 2,
+        text: "You find a wallet with $500 cash and an ID. You could really use the money for bills, and no one would know. What influences your choice?",
+        responses: {
+            deontology: "The money isn't yours. End of story. You immediately look up the address and plan to return it. Your bank account might be empty, but theft is theft - desperate circumstances don't change that fundamental truth.",
+            consequentialism: "You calculate: maybe this person is rich and won't miss it. But you'd be devastated if you lost $500. The pain they'd feel outweighs your gain. You return it, knowing the overall suffering is minimized.",
+            virtue: "You ask: 'Who am I when nobody's watching?' The answer matters more than the money. You return the wallet because that's what honest people do - and that's who you want to be."
+        }
+    },
+    {
+        id: 3,
+        text: "You witness a classmate cheating on an important exam. Reporting them could ruin their scholarship, but saying nothing feels wrong. How do you decide?",
+        responses: {
+            deontology: "Academic integrity isn't negotiable. You report it. The rules exist to protect everyone, and you have a duty to uphold them - even when it costs someone dearly. Fair is fair.",
+            consequentialism: "One person's scholarship versus the integrity of the whole system. If cheaters succeed, honest students suffer. You report it, knowing that protecting the system helps more people in the long run, even if it destroys one person's future.",
+            virtue: "This tears you apart. You decide to confront the cheater first - giving them a chance to confess. A person of character seeks justice, but also shows mercy. Maybe there's a way to be both fair and compassionate."
+        }
+    },
+    {
+        id: 4,
+        text: "A charity asks for donations. You can donate $100 to help many strangers, or give it to one neighbor you know who's struggling. What matters most?",
+        responses: {
+            deontology: "You have a special responsibility to your neighbor - proximity creates obligation. You can't save everyone, but you CAN help the person right in front of you. That's your duty.",
+            consequentialism: "The math is brutal: $100 helps 50 people a little, or 1 person a lot. You donate to the charity. Maximum impact matters more than personal connection. Your neighbor is one person; those strangers are fifty.",
+            virtue: "You think about what generosity really means. You split the money - $50 to the charity, $50 to your neighbor. A good person doesn't choose between compassion for strangers and care for neighbors. Both matter."
+        }
+    },
+    {
+        id: 5,
+        text: "You see someone shoplifting food at a grocery store. They look desperate and hungry. What should you consider?",
+        responses: {
+            deontology: "Theft is theft, regardless of need. You alert the staff. The law exists for a reason, and you won't condone breaking it. If you let this slide, where do you draw the line?",
+            consequentialism: "The store loses $20 of food it would've thrown away. The person gets a meal they desperately need. You pretend you didn't see anything. The total suffering in the world just decreased.",
+            virtue: "You approach them directly and offer to buy the food yourself. A compassionate person helps those in need - but a person of integrity doesn't ignore theft. You find the third option: direct action."
+        }
+    },
+    {
+        id: 6,
+        text: "Your boss asks you to slightly exaggerate numbers in a report to secure funding. It would help the whole team keep their jobs. What principle guides you?",
+        responses: {
+            deontology: "You refuse. 'I won't falsify data, even to save jobs.' Integrity isn't situational. You might lose your job for this, but you'll keep your self-respect. Some things aren't negotiable.",
+            consequentialism: "Tiny exaggeration, major benefit: the entire team stays employed. You adjust the numbers. The greater good sometimes requires bending the rules. Real-world ethics isn't always black and white.",
+            virtue: "You counter-propose: 'Let me present the honest numbers, but I'll make the strongest case possible.' A person of integrity finds creative solutions that don't require lying. Honor AND pragmatism."
+        }
+    },
+    {
+        id: 7,
+        text: "You can break a promise to attend a friend's event in order to help a stranger in genuine need. Which consideration weighs more heavily?",
+        responses: {
+            deontology: "You keep your promise. You gave your word, and that means something. You apologize to the stranger and suggest other resources. A promise is a sacred commitment that shouldn't be broken.",
+            consequentialism: "Your friend will be disappointed for one evening. The stranger needs immediate help. You break the promise, knowing this creates more overall good. Your friend will understand eventually.",
+            virtue: "You call your friend, explain the situation honestly, and ask if they'd understand. A person of character honors commitments, but also responds to urgent need. Transparency makes all the difference."
+        }
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+];
+
+// Summary messages based on the dominant framework
+const summaryMessages = {
+    deontology: "You lean toward <strong>Duty-based ethics (Deontology)</strong>. You care about rules, principles, and doing what's right regardless of the outcome. For you, moral rules are universal and should be followed consistently.",
+    consequentialism: "You lean toward <strong>Consequentialism</strong>. You focus on outcomes and try to create the best overall results. You believe the morality of an action depends on its consequences, not just the action itself.",
+    virtue: "You lean toward <strong>Virtue Ethics</strong>. You care about what kind of person you are becoming through your actions. You ask 'What would a good person do?' and focus on developing strong character."
+};
+
+// ========================================
+// GAME STATE
+// ========================================
+
+let currentScenarioIndex = 0;
+let choices = []; // Array to store player choices
+
+// ========================================
+// DOM ELEMENTS
+// ========================================
+
+const gameScreen = document.getElementById('gameScreen');
+const resultsScreen = document.getElementById('resultsScreen');
+const scenarioText = document.getElementById('scenarioText');
+const feedbackBox = document.getElementById('feedbackBox');
+const progressIndicator = document.getElementById('progressIndicator');
+const playAgainBtn = document.getElementById('playAgainBtn');
+
+// Door elements
+const doors = document.querySelectorAll('.door');
+
+// Results elements
+const dutyBar = document.getElementById('dutyBar');
+const outcomesBar = document.getElementById('outcomesBar');
+const characterBar = document.getElementById('characterBar');
+const dutyCount = document.getElementById('dutyCount');
+const outcomesCount = document.getElementById('outcomesCount');
+const characterCount = document.getElementById('characterCount');
+const summaryText = document.getElementById('summaryText');
+
+// ========================================
+// GAME FUNCTIONS
+// ========================================
+
+/**
+ * Initialize the game
+ */
+function initGame() {
+    currentScenarioIndex = 0;
+    choices = [];
+    showScenario(currentScenarioIndex);
+    
+    // Add click event listeners to doors
+    doors.forEach(door => {
+        door.addEventListener('click', () => {
+            const framework = door.getAttribute('data-framework');
+            handleChoice(framework);
+        });
+    });
+
+    // Play again button listener
+    playAgainBtn.addEventListener('click', resetGame);
+}
+
+/**
+ * Display the current scenario
+ * @param {number} index - Index of scenario to display
+ */
+function showScenario(index) {
+    const scenario = scenarios[index];
+    scenarioText.textContent = scenario.text;
+    
+    // Update progress indicator
+    progressIndicator.textContent = `Scenario ${index + 1} of ${scenarios.length}`;
+    
+    // Hide feedback box
+    feedbackBox.classList.add('hidden');
+}
+
+/**
+ * Handle player's choice of ethical framework
+ * @param {string} frameworkKey - The framework chosen (deontology, consequentialism, or virtue)
+ */
+function handleChoice(frameworkKey) {
+    // Save the choice
+    choices.push(frameworkKey);
+    
+    // Get the current scenario
+    const currentScenario = scenarios[currentScenarioIndex];
+    
+    // Show scenario-specific feedback message
+    feedbackBox.textContent = currentScenario.responses[frameworkKey];
+    feedbackBox.classList.remove('hidden');
+    
+    // Disable doors temporarily
+    doors.forEach(door => door.style.pointerEvents = 'none');
+    
+    // Wait 3 seconds (giving time to read), then move to next scenario or show results
+    setTimeout(() => {
+        // Re-enable doors
+        doors.forEach(door => door.style.pointerEvents = 'auto');
+        
+        currentScenarioIndex++;
+        
+        if (currentScenarioIndex < scenarios.length) {
+            // Show next scenario
+            showScenario(currentScenarioIndex);
+        } else {
+            // Game complete - show results
+            showResults();
+        }
+    }, 3000);
+}
+
+/**
+ * Calculate results and display the results screen
+ */
+function showResults() {
+    // Hide game screen, show results screen
+    gameScreen.classList.add('hidden');
+    resultsScreen.classList.remove('hidden');
+    
+    // Count each framework choice
+    const counts = {
+        deontology: 0,
+        consequentialism: 0,
+        virtue: 0
+    };
+    
+    choices.forEach(choice => {
+        counts[choice]++;
+    });
+    
+    // Update count displays
+    dutyCount.textContent = counts.deontology;
+    outcomesCount.textContent = counts.consequentialism;
+    characterCount.textContent = counts.virtue;
+    
+    // Calculate bar widths (as percentage of total choices)
+    const total = choices.length;
+    const dutyPercent = (counts.deontology / total) * 100;
+    const outcomesPercent = (counts.consequentialism / total) * 100;
+    const characterPercent = (counts.virtue / total) * 100;
+    
+    // Set bar widths with animation
+    dutyBar.style.width = dutyPercent + '%';
+    outcomesBar.style.width = outcomesPercent + '%';
+    characterBar.style.width = characterPercent + '%';
+    
+    // Determine dominant framework
+    let dominant = 'deontology';
+    let maxCount = counts.deontology;
+    
+    if (counts.consequentialism > maxCount) {
+        dominant = 'consequentialism';
+        maxCount = counts.consequentialism;
     }
-}
-
-.feedback-box.hidden {
-    display: none;
-}
-
-/* Doors container - three ethical framework options */
-.doors-container {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
-    justify-content: center;
-}
-
-/* Individual door styling */
-.door {
-    flex: 1;
-    background: white;
-    border-radius: 12px;
-    padding: 30px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 3px solid #e2e8f0;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.door h3 {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-    font-weight: 700;
-}
-
-.framework-name {
-    font-size: 0.9rem;
-    color: #718096;
-    margin-bottom: 15px;
-    font-style: italic;
-}
-
-.door-description {
-    font-size: 1rem;
-    color: #4a5568;
-    font-weight: 500;
-}
-
-/* Hover effects for each door with unique colors */
-.duty-door {
-    border-color: #4299e1;
-}
-
-.duty-door:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(66, 153, 225, 0.4);
-    border-color: #3182ce;
-    background: #ebf8ff;
-}
-
-.outcomes-door {
-    border-color: #48bb78;
-}
-
-.outcomes-door:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(72, 187, 120, 0.4);
-    border-color: #38a169;
-    background: #f0fff4;
-}
-
-.character-door {
-    border-color: #ed8936;
-}
-
-.character-door:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(237, 137, 54, 0.4);
-    border-color: #dd6b20;
-    background: #fffaf0;
-}
-
-/* Progress indicator */
-.progress-indicator {
-    text-align: center;
-    color: #718096;
-    font-size: 0.95rem;
-    padding-top: 10px;
-    border-top: 2px solid #e2e8f0;
-}
-
-/* Results screen */
-.results-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.results-screen.hidden {
-    display: none;
-}
-
-.results-content {
-    width: 100%;
-    max-width: 600px;
-}
-
-/* Chart visualization */
-.chart-container {
-    margin: 30px 0;
-}
-
-.chart-row {
-    margin-bottom: 25px;
-}
-
-.chart-label {
-    display: block;
-    font-weight: 600;
-    color: #2d3748;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-}
-
-.bar-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.bar {
-    height: 40px;
-    border-radius: 8px;
-    transition: width 0.8s ease;
-    min-width: 0;
-}
-
-.duty-bar {
-    background: linear-gradient(90deg, #4299e1, #3182ce);
-}
-
-.outcomes-bar {
-    background: linear-gradient(90deg, #48bb78, #38a169);
-}
-
-.character-bar {
-    background: linear-gradient(90deg, #ed8936, #dd6b20);
-}
-
-.count {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #2d3748;
-    min-width: 30px;
-}
-
-/* Summary text */
-.summary-text {
-    background: #f7fafc;
-    border-radius: 12px;
-    padding: 25px;
-    margin: 20px 0;
-    text-align: center;
-    font-size: 1.1rem;
-    color: #2d3748;
-    line-height: 1.8;
-    border-left: 5px solid #667eea;
-}
-
-/* Play again button */
-.play-again-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: block;
-    margin: 30px auto 0;
-}
-
-.play-again-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-}
-
-.play-again-btn:active {
-    transform: translateY(0);
-}
-
-/* Hide class utility */
-.hidden {
-    display: none !important;
-}
-
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-    .container {
-        padding: 25px;
+    
+    if (counts.virtue > maxCount) {
+        dominant = 'virtue';
+        maxCount = counts.virtue;
     }
-
-    .title {
-        font-size: 1.5rem;
-    }
-
-    .doors-container {
-        flex-direction: column;
-    }
-
-    .door {
-        min-height: 150px;
-    }
-
-    .scenario-text {
-        font-size: 1rem;
-    }
-
-    .chart-label {
-        font-size: 0.95rem;
-    }
-
-    .bar {
-        height: 30px;
+    
+    // Handle ties - show a combined message
+    const topFrameworks = [];
+    if (counts.deontology === maxCount) topFrameworks.push('deontology');
+    if (counts.consequentialism === maxCount) topFrameworks.push('consequentialism');
+    if (counts.virtue === maxCount) topFrameworks.push('virtue');
+    
+    if (topFrameworks.length > 1) {
+        summaryText.innerHTML = "You show a balanced approach to ethics! You draw from multiple frameworks depending on the situation. This flexibility can be valuable in navigating complex moral dilemmas.";
+    } else {
+        summaryText.innerHTML = summaryMessages[dominant];
     }
 }
+
+/**
+ * Reset the game to play again
+ */
+function resetGame() {
+    // Reset game state
+    currentScenarioIndex = 0;
+    choices = [];
+    
+    // Reset bar widths
+    dutyBar.style.width = '0%';
+    outcomesBar.style.width = '0%';
+    characterBar.style.width = '0%';
+    
+    // Hide results, show game screen
+    resultsScreen.classList.add('hidden');
+    gameScreen.classList.remove('hidden');
+    
+    // Show first scenario
+    showScenario(0);
+}
+
+// ========================================
+// START THE GAME
+// ========================================
+
+// Initialize game when page loads
+initGame();
