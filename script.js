@@ -1,5 +1,5 @@
 // ========================================
-// GAME DATA: Scenarios with Custom Responses
+// GAME DATA: Scenarios with Engaging Responses
 // ========================================
 
 const scenarios = [
@@ -7,63 +7,63 @@ const scenarios = [
         id: 1,
         text: "Your best friend asks you to lie to their parents about where they were last night. They were at a party they weren't supposed to attend. What guides your decision?",
         responses: {
-            deontology: "You refuse to lie because honesty is a fundamental principle. Even to help a friend, you believe lying is wrong and violates the duty to tell the truth.",
-            consequentialism: "You consider whether lying would produce the best outcome - perhaps protecting your friend from punishment while weighing the potential harm of dishonesty.",
-            virtue: "You ask yourself: 'What would an honest, loyal person do?' You consider both truthfulness and friendship as virtues that might be in tension here."
+            deontology: "You tell your friend you can't lie. 'I'm sorry, but I won't compromise my integrity - even for you.' Your friendship might be strained, but you can look yourself in the mirror. Some lines shouldn't be crossed.",
+            consequentialism: "You weigh the options: a small lie prevents major family conflict and keeps your friendship intact. Nobody gets hurt. Sometimes the right answer isn't the honest one - it's the one that causes the least damage.",
+            virtue: "You think: 'What kind of friend am I? What kind of person do I want to be?' Real friendship means both loyalty AND honesty. You decide to talk to your friend about facing the consequences with integrity."
         }
     },
     {
         id: 2,
         text: "You find a wallet with $500 cash and an ID. You could really use the money for bills, and no one would know. What influences your choice?",
         responses: {
-            deontology: "You feel obligated to return the wallet because taking what isn't yours violates the principle of respecting others' property, regardless of your circumstances.",
-            consequentialism: "You weigh the outcomes: your financial relief versus the owner's loss. You consider whether the owner can afford to lose $500 and what maximizes overall wellbeing.",
-            virtue: "You reflect on integrity and honesty. A person of good character returns what isn't theirs, even when no one is watching."
+            deontology: "The money isn't yours. End of story. You immediately look up the address and plan to return it. Your bank account might be empty, but theft is theft - desperate circumstances don't change that fundamental truth.",
+            consequentialism: "You calculate: maybe this person is rich and won't miss it. But you'd be devastated if you lost $500. The pain they'd feel outweighs your gain. You return it, knowing the overall suffering is minimized.",
+            virtue: "You ask: 'Who am I when nobody's watching?' The answer matters more than the money. You return the wallet because that's what honest people do - and that's who you want to be."
         }
     },
     {
         id: 3,
         text: "You witness a classmate cheating on an important exam. Reporting them could ruin their scholarship, but saying nothing feels wrong. How do you decide?",
         responses: {
-            deontology: "You believe there's a duty to uphold academic integrity. Cheating violates rules that exist for good reason, and you have an obligation to report it.",
-            consequentialism: "You calculate the consequences: is the harm of one person losing their scholarship worth maintaining the system's integrity? What produces the best overall outcome?",
-            virtue: "You consider what a fair and honest person would do. You think about both justice and compassion as virtues, and how to balance them."
+            deontology: "Academic integrity isn't negotiable. You report it. The rules exist to protect everyone, and you have a duty to uphold them - even when it costs someone dearly. Fair is fair.",
+            consequentialism: "One person's scholarship versus the integrity of the whole system. If cheaters succeed, honest students suffer. You report it, knowing that protecting the system helps more people in the long run, even if it destroys one person's future.",
+            virtue: "This tears you apart. You decide to confront the cheater first - giving them a chance to confess. A person of character seeks justice, but also shows mercy. Maybe there's a way to be both fair and compassionate."
         }
     },
     {
         id: 4,
         text: "A charity asks for donations. You can donate $100 to help many strangers, or give it to one neighbor you know who's struggling. What matters most?",
         responses: {
-            deontology: "You consider whether you have a special duty to your neighbor versus strangers. Perhaps proximity creates obligations, or perhaps all people deserve equal consideration.",
-            consequentialism: "You calculate which option produces more good: helping many people a little bit, or helping one person significantly. You focus purely on maximizing positive outcomes.",
-            virtue: "You think about generosity and compassion. Would a good person prioritize personal connections or impartial concern for those in greatest need?"
+            deontology: "You have a special responsibility to your neighbor - proximity creates obligation. You can't save everyone, but you CAN help the person right in front of you. That's your duty.",
+            consequentialism: "The math is brutal: $100 helps 50 people a little, or 1 person a lot. You donate to the charity. Maximum impact matters more than personal connection. Your neighbor is one person; those strangers are fifty.",
+            virtue: "You think about what generosity really means. You split the money - $50 to the charity, $50 to your neighbor. A good person doesn't choose between compassion for strangers and care for neighbors. Both matter."
         }
     },
     {
         id: 5,
         text: "You see someone shoplifting food at a grocery store. They look desperate and hungry. What should you consider?",
         responses: {
-            deontology: "Stealing is wrong, regardless of circumstances. You believe rules against theft exist for important reasons and shouldn't be violated, even for sympathetic reasons.",
-            consequentialism: "You weigh the outcomes: the store's minor loss versus someone's immediate need for food. Perhaps the consequences justify the action in this case.",
-            virtue: "You consider what a compassionate but just person would do. You think about both mercy and respect for law, and how a good person balances these."
+            deontology: "Theft is theft, regardless of need. You alert the staff. The law exists for a reason, and you won't condone breaking it. If you let this slide, where do you draw the line?",
+            consequentialism: "The store loses $20 of food it would've thrown away. The person gets a meal they desperately need. You pretend you didn't see anything. The total suffering in the world just decreased.",
+            virtue: "You approach them directly and offer to buy the food yourself. A compassionate person helps those in need - but a person of integrity doesn't ignore theft. You find the third option: direct action."
         }
     },
     {
         id: 6,
         text: "Your boss asks you to slightly exaggerate numbers in a report to secure funding. It would help the whole team keep their jobs. What principle guides you?",
         responses: {
-            deontology: "You refuse to lie or deceive, even for good outcomes. Honesty and integrity are non-negotiable principles that must be upheld regardless of consequences.",
-            consequentialism: "You consider whether the good outcome (saving jobs) justifies the slight deception. Perhaps the overall benefit outweighs the harm of minor dishonesty.",
-            virtue: "You reflect on what a person of integrity would do. Can you be both loyal to your team and maintain honesty? What does good character require here?"
+            deontology: "You refuse. 'I won't falsify data, even to save jobs.' Integrity isn't situational. You might lose your job for this, but you'll keep your self-respect. Some things aren't negotiable.",
+            consequentialism: "Tiny exaggeration, major benefit: the entire team stays employed. You adjust the numbers. The greater good sometimes requires bending the rules. Real-world ethics isn't always black and white.",
+            virtue: "You counter-propose: 'Let me present the honest numbers, but I'll make the strongest case possible.' A person of integrity finds creative solutions that don't require lying. Honor AND pragmatism."
         }
     },
     {
         id: 7,
         text: "You can break a promise to attend a friend's event in order to help a stranger in genuine need. Which consideration weighs more heavily?",
         responses: {
-            deontology: "You feel bound by your promise. You made a commitment, and keeping your word is a fundamental duty that shouldn't be broken, even for good reasons.",
-            consequentialism: "You weigh which action produces more good: keeping a promise for a social event versus helping someone in genuine need. The consequences might justify breaking the promise.",
-            virtue: "You consider what a loyal and compassionate person would do. You think about both faithfulness and benevolence as virtues, and how to navigate the conflict."
+            deontology: "You keep your promise. You gave your word, and that means something. You apologize to the stranger and suggest other resources. A promise is a sacred commitment that shouldn't be broken.",
+            consequentialism: "Your friend will be disappointed for one evening. The stranger needs immediate help. You break the promise, knowing this creates more overall good. Your friend will understand eventually.",
+            virtue: "You call your friend, explain the situation honestly, and ask if they'd understand. A person of character honors commitments, but also responds to urgent need. Transparency makes all the difference."
         }
     }
 ];
@@ -271,3 +271,4 @@ function resetGame() {
 
 // Initialize game when page loads
 initGame();
+
