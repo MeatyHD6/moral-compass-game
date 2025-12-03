@@ -68,6 +68,13 @@ const scenarios = [
     }
 ];
 
+// Summary messages based on the dominant framework
+const summaryMessages = {
+    deontology: "You lean toward <strong>Duty-based ethics (Deontology)</strong>. You care about rules, principles, and doing what's right regardless of the outcome. For you, moral rules are universal and should be followed consistently.",
+    consequentialism: "You lean toward <strong>Consequentialism</strong>. You focus on outcomes and try to create the best overall results. You believe the morality of an action depends on its consequences, not just the action itself.",
+    virtue: "You lean toward <strong>Virtue Ethics</strong>. You care about what kind of person you are becoming through your actions. You ask 'What would a good person do?' and focus on developing strong character."
+};
+
 // ========================================
 // GAME STATE
 // ========================================
@@ -97,16 +104,6 @@ const dutyCount = document.getElementById('dutyCount');
 const outcomesCount = document.getElementById('outcomesCount');
 const characterCount = document.getElementById('characterCount');
 const summaryText = document.getElementById('summaryText');
-
-// ========================================
-// SUMMARY MESSAGES FOR RESULTS
-// ========================================
-
-const summaryMessages = {
-    deontology: "You lean toward <strong>Duty-based ethics (Deontology)</strong>. You care about rules, principles, and doing what's right regardless of the outcome. For you, moral rules are universal and should be followed consistently.",
-    consequentialism: "You lean toward <strong>Consequentialism</strong>. You focus on outcomes and try to create the best overall results. You believe the morality of an action depends on its consequences, not just the action itself.",
-    virtue: "You lean toward <strong>Virtue Ethics</strong>. You care about what kind of person you are becoming through your actions. You ask 'What would a good person do?' and focus on developing strong character."
-};
 
 // ========================================
 // GAME FUNCTIONS
@@ -165,7 +162,7 @@ function handleChoice(frameworkKey) {
     // Disable doors temporarily
     doors.forEach(door => door.style.pointerEvents = 'none');
     
-    // Wait 3 seconds (increased to give time to read), then move to next scenario or show results
+    // Wait 3 seconds (giving time to read), then move to next scenario or show results
     setTimeout(() => {
         // Re-enable doors
         doors.forEach(door => door.style.pointerEvents = 'auto');
@@ -179,7 +176,7 @@ function handleChoice(frameworkKey) {
             // Game complete - show results
             showResults();
         }
-    }, 3000); // Increased to 3 seconds so they can read the feedback
+    }, 3000);
 }
 
 /**
@@ -271,4 +268,3 @@ function resetGame() {
 
 // Initialize game when page loads
 initGame();
-
