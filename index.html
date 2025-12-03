@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moral Compass: Ethics in One Room</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main game container -->
+        <div id="gameScreen" class="game-screen">
+            <h1 class="title">Moral Compass: Ethics in One Room</h1>
+            
+            <!-- Scenario display area -->
+            <div class="scenario-box">
+                <p id="scenarioText" class="scenario-text"></p>
+            </div>
+
+            <!-- Feedback message (shows after choice) -->
+            <div id="feedbackBox" class="feedback-box hidden"></div>
+
+            <!-- Three ethical framework "doors" -->
+            <div class="doors-container">
+                <div class="door duty-door" data-framework="deontology">
+                    <h3>Duty</h3>
+                    <p class="framework-name">(Deontology)</p>
+                    <p class="door-description">Follow the rule</p>
+                </div>
+
+                <div class="door outcomes-door" data-framework="consequentialism">
+                    <h3>Outcomes</h3>
+                    <p class="framework-name">(Consequentialism)</p>
+                    <p class="door-description">Maximize good results</p>
+                </div>
+
+                <div class="door character-door" data-framework="virtue">
+                    <h3>Character</h3>
+                    <p class="framework-name">(Virtue Ethics)</p>
+                    <p class="door-description">Act like a good person</p>
+                </div>
+            </div>
+
+            <!-- Progress indicator -->
+            <div id="progressIndicator" class="progress-indicator"></div>
+        </div>
+
+        <!-- Results screen (hidden initially) -->
+        <div id="resultsScreen" class="results-screen hidden">
+            <h1 class="title">Your Moral Compass Results</h1>
+            
+            <div class="results-content">
+                <!-- Bar chart visualization -->
+                <div class="chart-container">
+                    <div class="chart-row">
+                        <span class="chart-label">Duty (Deontology):</span>
+                        <div class="bar-wrapper">
+                            <div id="dutyBar" class="bar duty-bar"></div>
+                            <span id="dutyCount" class="count">0</span>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">Outcomes (Consequentialism):</span>
+                        <div class="bar-wrapper">
+                            <div id="outcomesBar" class="bar outcomes-bar"></div>
+                            <span id="outcomesCount" class="count">0</span>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <span class="chart-label">Character (Virtue Ethics):</span>
+                        <div class="bar-wrapper">
+                            <div id="characterBar" class="bar character-bar"></div>
+                            <span id="characterCount" class="count">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary text based on highest choice -->
+                <div id="summaryText" class="summary-text"></div>
+
+                <!-- Play again button -->
+                <button id="playAgainBtn" class="play-again-btn">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
