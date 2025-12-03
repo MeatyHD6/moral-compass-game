@@ -90,6 +90,8 @@ const gameScreen = document.getElementById('gameScreen');
 const resultsScreen = document.getElementById('resultsScreen');
 const scenarioText = document.getElementById('scenarioText');
 const feedbackBox = document.getElementById('feedbackBox');
+const nextBtn = document.getElementById('nextBtn');
+const doorsContainer = document.getElementById('doorsContainer');
 const progressIndicator = document.getElementById('progressIndicator');
 const playAgainBtn = document.getElementById('playAgainBtn');
 
@@ -125,6 +127,9 @@ function initGame() {
         });
     });
 
+    // Next button listener
+    nextBtn.addEventListener('click', handleNext);
+
     // Play again button listener
     playAgainBtn.addEventListener('click', resetGame);
 }
@@ -140,8 +145,10 @@ function showScenario(index) {
     // Update progress indicator
     progressIndicator.textContent = `Scenario ${index + 1} of ${scenarios.length}`;
     
-    // Hide feedback box
+    // Show doors, hide feedback and next button
+    doorsContainer.classList.remove('hidden');
     feedbackBox.classList.add('hidden');
+    nextBtn.classList.add('hidden');
 }
 
 /**
@@ -159,24 +166,24 @@ function handleChoice(frameworkKey) {
     feedbackBox.textContent = currentScenario.responses[frameworkKey];
     feedbackBox.classList.remove('hidden');
     
-    // Disable doors temporarily
-    doors.forEach(door => door.style.pointerEvents = 'none');
+    // Hide doors and show next button
+    doorsContainer.classList.add('hidden');
+    nextBtn.classList.remove('hidden');
+}
+
+/**
+ * Handle clicking the Next button
+ */
+function handleNext() {
+    currentScenarioIndex++;
     
-    // Wait 3 seconds (giving time to read), then move to next scenario or show results
-    setTimeout(() => {
-        // Re-enable doors
-        doors.forEach(door => door.style.pointerEvents = 'auto');
-        
-        currentScenarioIndex++;
-        
-        if (currentScenarioIndex < scenarios.length) {
-            // Show next scenario
-            showScenario(currentScenarioIndex);
-        } else {
-            // Game complete - show results
-            showResults();
-        }
-    }, 3000);
+    if (currentScenarioIndex < scenarios.length) {
+        // Show next scenario
+        showScenario(currentScenarioIndex);
+    } else {
+        // Game complete - show results
+        showResults();
+    }
 }
 
 /**
